@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LifeTag</string>
     <string name="scan_message">Tab back of phone against chip to scan it</string>
+    <string name="scan_save_message">Tab back of phone against chip to save profile changes</string>
 </resources>

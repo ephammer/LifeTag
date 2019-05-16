@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thinkhodl.lifetag">
 
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileInfoActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".EditInfoActivity"
+        <activity android:name=".SaveProfileActivity"></activity>
+        <activity
+            android:name=".ProfileInfoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EditInfoActivity"
             android:parentActivityName=".ProfileInfoActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
