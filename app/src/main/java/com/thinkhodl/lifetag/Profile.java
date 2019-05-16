@@ -2,8 +2,16 @@ package com.thinkhodl.lifetag;
 
 public class Profile {
 
-    private String firstName,lastName,age,bloodType,allergies,illnesses,vaccines,
-            isDonor,contactName,contactNumber;
+    private String firstName = "None",
+            lastName = "None",
+            age= "None",
+            bloodType= "None",
+            allergies= "None",
+            illnesses= "None",
+            vaccines= "None",
+            isDonor= "None",
+            contactName= "None",
+            contactNumber= "None";
 
     public Profile(String text){
         String[] splitted = text.split(";", 0);

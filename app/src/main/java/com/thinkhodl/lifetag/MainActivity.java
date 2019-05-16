@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, ProfileInfoActivity.class);
                 intent.putExtra(Utils.PROFILE_INFO, message);
+
                 startActivity(intent);
 
 
@@ -133,6 +134,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         waitForSomething();
+
     }
 
+   /* @Override
+    protected void onPause() {
+        super.onPause();
+        nfcAdapter.disableForegroundDispatch(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        nfcAdapter.disableForegroundDispatch(this);
+
+    }*/
 }
