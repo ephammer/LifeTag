@@ -5,7 +5,10 @@ import android.animation.ValueAnimator;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
@@ -29,13 +32,21 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         animNFC();
+
+        mNFCLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ProfileInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void animNFC(){
 
         ObjectAnimator fadeOut = ObjectAnimator.ofFloat(mNFCAntenaImageView, "alpha",  1f, 0);
-        fadeOut.setDuration(2000);
-        fadeOut.setRepeatMode(ValueAnimator.RESTART);
+        fadeOut.setDuration(1500);
+        fadeOut.setRepeatMode(ValueAnimator.REVERSE);
         fadeOut.setRepeatCount(Animation.INFINITE);
         fadeOut.start();
 
