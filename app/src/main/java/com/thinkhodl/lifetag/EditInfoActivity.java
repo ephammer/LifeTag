@@ -1,9 +1,11 @@
 package com.thinkhodl.lifetag;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -88,12 +90,17 @@ public class EditInfoActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.save_profile) {
-            Intent saveActivity = new Intent(EditInfoActivity.this,SaveProfileActivity.class);
-            saveActivity.putExtra(Utils.PROFILE_INFO,saveProfile());
-            startActivity(saveActivity);
-            finish();
-            return true;
+        switch (id) {
+            case R.id.save_profile:
+                Intent saveActivity = new Intent(EditInfoActivity.this,SaveProfileActivity.class);
+                saveActivity.putExtra(Utils.PROFILE_INFO,saveProfile());
+                startActivity(saveActivity);
+                finish();
+                return true;
+             case android.R.id.home:
+                confirmCancel();
+                //                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -133,5 +140,32 @@ public class EditInfoActivity extends AppCompatActivity {
         Log.v("saveProfile",profile.encode());
 
         return profile.encode();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        confirmCancel();
+
+
+    }
+
+    void confirmCancel() {
+        new AlertDialog.Builder(this)
+                //                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Cancel edit")
+                .setMessage("Are you sure you want to leave the profile edit? \n\nUnsaved changes will be lost.")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(EditInfoActivity.this,ProfileInfoActivity.class);
+                        intent.putExtra(Utils.PROFILE_INFO,message);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

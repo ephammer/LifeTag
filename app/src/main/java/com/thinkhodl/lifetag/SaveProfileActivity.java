@@ -85,6 +85,9 @@ public class SaveProfileActivity extends AppCompatActivity {
                 NdefRecord mimeRecord = NdefRecord.createMime("text/plain", message.getBytes(Charset.forName("US-ASCII")));
                 ndef.writeNdefMessage(new NdefMessage(mimeRecord));
                 ndef.close();
+                Intent intent = new Intent(SaveProfileActivity.this,ProfileInfoActivity.class);
+                intent.putExtra(Utils.PROFILE_INFO,message);
+                startActivity(intent);
                 finish();
 
             } catch (IOException | FormatException e) {
@@ -115,5 +118,6 @@ public class SaveProfileActivity extends AppCompatActivity {
         super.onResume();
         waitForSomething();
     }
+
 
 }

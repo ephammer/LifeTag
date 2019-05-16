@@ -124,7 +124,7 @@ public class ProfileInfoActivity extends AppCompatActivity {
             Intent editActivity = new Intent(ProfileInfoActivity.this,EditInfoActivity.class);
             editActivity.putExtra(Utils.PROFILE_INFO,message);
             startActivity(editActivity);
-            finish();
+//            finish();
             return true;
         }
 

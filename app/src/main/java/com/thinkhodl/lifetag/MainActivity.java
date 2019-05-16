@@ -67,21 +67,23 @@ public class MainActivity extends AppCompatActivity {
     // When an NFC tag comes into range, call the main activity which handles writing the data to the tag
     private void readFromNFC(Ndef ndef) {
 
-        try {
-            ndef.connect();
-            NdefMessage ndefMessage = ndef.getNdefMessage();
-            String message = new String(ndefMessage.getRecords()[0].getPayload());
+        if(ndef!=null) {
+            try {
+                ndef.connect();
+                NdefMessage ndefMessage = ndef.getNdefMessage();
+                String message = new String(ndefMessage.getRecords()[0].getPayload());
 
-            ndef.close();
+                ndef.close();
 
-            Intent intent = new Intent(MainActivity.this,ProfileInfoActivity.class);
-            intent.putExtra(Utils.PROFILE_INFO,message);
-            startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, ProfileInfoActivity.class);
+                intent.putExtra(Utils.PROFILE_INFO, message);
+                startActivity(intent);
 
 
-        } catch (IOException | FormatException e) {
-            e.printStackTrace();
+            } catch (IOException | FormatException e) {
+                e.printStackTrace();
 
+            }
         }
     }
 
