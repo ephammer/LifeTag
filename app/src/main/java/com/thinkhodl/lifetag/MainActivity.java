@@ -15,7 +15,6 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
@@ -33,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.nfc_view)
     ConstraintLayout mNFCLayout;
 
-    @BindView(R.id.nfc_antena_imageview)
+    @BindView(R.id.nfc_wristband_imageview)
     ImageView mNFCAntenaImageView;
+
+    @BindView(R.id.nfc_waves_imageView)
+    ImageView mNFCWavesImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void animNFC(){
 
-        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(mNFCAntenaImageView, "alpha",  1f, 0);
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(mNFCAntenaImageView, "translationY", -200f);
         fadeOut.setDuration(1500);
         fadeOut.setRepeatMode(ValueAnimator.REVERSE);
         fadeOut.setRepeatCount(Animation.INFINITE);
         fadeOut.start();
+
+
+
+        ObjectAnimator move = ObjectAnimator.ofFloat(mNFCWavesImageView, "translationY", -200f);
+        move.setDuration(1500);
+        move.setRepeatMode(ValueAnimator.REVERSE);
+        move.setRepeatCount(Animation.INFINITE);
+        move.start();
+
+        ObjectAnimator fadeOutWaves = ObjectAnimator.ofFloat(mNFCWavesImageView, "alpha",  1f, 0);
+        fadeOutWaves.setDuration(1000);
+        fadeOutWaves.setRepeatMode(ValueAnimator.REVERSE);
+        fadeOutWaves.setRepeatCount(Animation.INFINITE);
+        fadeOutWaves.start();
 
     }
 

@@ -34,8 +34,11 @@ public class SaveProfileActivity extends AppCompatActivity {
     @BindView(R.id.save_nfc_view)
     ConstraintLayout mNFCLayout;
 
-    @BindView(R.id.nfc_antena_imageview)
+    @BindView(R.id.nfc_wristband_imageview)
     ImageView mNFCAntenaImageView;
+
+    @BindView(R.id.nfc_waves_imageView)
+    ImageView mNFCWavesImageView;
 
     private String message;
 
@@ -53,17 +56,25 @@ public class SaveProfileActivity extends AppCompatActivity {
     }
     private void animNFC(){
 
-        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(mNFCAntenaImageView, "alpha",  1f, 0);
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(mNFCAntenaImageView, "translationY", -200f);
         fadeOut.setDuration(1500);
         fadeOut.setRepeatMode(ValueAnimator.REVERSE);
         fadeOut.setRepeatCount(Animation.INFINITE);
         fadeOut.start();
 
-        ObjectAnimator move = ObjectAnimator.ofFloat(mNFCAntenaImageView, "translationX", 100f);
+
+
+        ObjectAnimator move = ObjectAnimator.ofFloat(mNFCWavesImageView, "translationY", -200f);
         move.setDuration(1500);
-        move.setRepeatMode(ValueAnimator.RESTART);
+        move.setRepeatMode(ValueAnimator.REVERSE);
         move.setRepeatCount(Animation.INFINITE);
         move.start();
+
+        ObjectAnimator fadeOutWaves = ObjectAnimator.ofFloat(mNFCWavesImageView, "alpha",  1f, 0);
+        fadeOutWaves.setDuration(1000);
+        fadeOutWaves.setRepeatMode(ValueAnimator.REVERSE);
+        fadeOutWaves.setRepeatCount(Animation.INFINITE);
+        fadeOutWaves.start();
 
     }
 
