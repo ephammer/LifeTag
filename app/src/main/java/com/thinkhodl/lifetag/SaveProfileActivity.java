@@ -59,6 +59,12 @@ public class SaveProfileActivity extends AppCompatActivity {
         fadeOut.setRepeatCount(Animation.INFINITE);
         fadeOut.start();
 
+        ObjectAnimator move = ObjectAnimator.ofFloat(mNFCAntenaImageView, "translationX", 100f);
+        move.setDuration(1500);
+        move.setRepeatMode(ValueAnimator.RESTART);
+        move.setRepeatCount(Animation.INFINITE);
+        move.start();
+
     }
 
 
