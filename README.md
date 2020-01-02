@@ -15,6 +15,8 @@ The first responder could just scan his bracelet with his phone to read critical
 
 ## Screenshots 
 
+![Welcome Scree](https://user-images.githubusercontent.com/17436690/71663415-cf384000-2d5d-11ea-8d94-c1e6a6c6060d.png)
+![Medical Info Screen](https://user-images.githubusercontent.com/17436690/71663448-f262ef80-2d5d-11ea-974e-73e76c965702.png)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
